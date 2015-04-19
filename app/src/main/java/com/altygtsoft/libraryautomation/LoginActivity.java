@@ -1,9 +1,13 @@
 package com.altygtsoft.libraryautomation;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 
 public class LoginActivity extends ActionBarActivity {
@@ -12,6 +16,33 @@ public class LoginActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        startAuthorization();
+    }
+
+    private void startAuthorization() {
+        final EditText userName = (EditText) findViewById(R.id.txtUserName);
+        final EditText password = (EditText) findViewById(R.id.txtPassword);
+        Button login = (Button) findViewById(R.id.btnLogin);
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (userName.getText().toString().equals("Ali") && password.getText().toString().equals("1")){
+
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.putExtra("ISADMIN", true );
+                    startActivity(intent);
+
+                }
+                else if (userName.getText().toString().equals("Ogrenci") && password.getText().toString().equals("2")){
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.putExtra("ISADMIN", false );
+                    startActivity(intent);
+                }
+
+            }
+        });
+
     }
 
 
