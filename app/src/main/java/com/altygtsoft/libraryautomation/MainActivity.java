@@ -7,7 +7,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
+import android.widget.TextView;
+import com.google.zxing.*;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -16,6 +17,7 @@ public class MainActivity extends ActionBarActivity {
     public Button nearestLib;
     public Button news;
     public Button statistics;
+    static final String ACTION_SCAN = "com.google.zxing.client.android.SCAN";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +50,9 @@ public class MainActivity extends ActionBarActivity {
         scanQR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Intent intent = new Intent(getApplicationContext(), QRReader.class);
-                startActivity(intent);*/
+
+                Intent intent = new Intent(getApplicationContext(), QRReader.class);
+                startActivity(intent);
             }
         });
 
@@ -100,4 +103,7 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+
 }
